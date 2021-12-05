@@ -12,8 +12,9 @@ const computerSelection = computerPlay();
 
 
 function playRound(computerSelection, playerSelection) {
-    debugger;
-    if (computerSelection === playerSelection) {
+    if (playerSelection != "rock" && "paper" && "scissors") {
+        alert("Sorry, please enter rock, paper, or scissors");
+    } else if (computerSelection === playerSelection) {
         return "It's a tie!";
     } else if (computerSelection === "rock") {
         if (playerSelection === "paper") {
