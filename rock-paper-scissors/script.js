@@ -1,19 +1,19 @@
+let computerScore = 0;
+let playerScore = 0;
+
 const playObjects = ["rock", "paper", "scissors"];
-const random = Math.floor(Math.random() * playObjects.length);
+const randomNumber = Math.floor(Math.random() * playObjects.length);
 
 function computerPlay() {
-    return playObjects[random];
+    return playObjects[randomNumber];
 }
 
-console.log(computerPlay());
-const playerSelection = prompt("enter an object:", "");
-console.log(playerSelection);
-const computerSelection = computerPlay();
+function playRound() {
+    const computerSelection = computerPlay();
+    const playerSelection = prompt("enter an object:", "");
 
-
-function playRound(computerSelection, playerSelection) {
-    if (playerSelection != "rock" && "paper" && "scissors") {
-        alert("Sorry, please enter rock, paper, or scissors");
+    if (playObjects.indexOf(playerSelection) < 0) {
+        console.log("wrong word");
     } else if (computerSelection === playerSelection) {
         return "It's a tie!";
     } else if (computerSelection === "rock") {
@@ -37,8 +37,44 @@ function playRound(computerSelection, playerSelection) {
     } else {
         return "Something's not right.."
     }
+}
 
+function game() {
+
+
+    for (i = 0; i < 5; i++) {
+        computerPlay();
+        let result = playRound();
+        console.log(result);
+    }
 
 }
 
-console.log(playRound(computerSelection, playerSelection));
+game();
+
+
+
+// if (playRound() == "It's a tie!") {
+//     computerScore++;
+//     playerScore++;
+// } else if (playRound() == "You lose! Paper beats rock" || "You You lose! Rock beats scissors" || "You lose! Scissors beat paper") {
+//     computerPlay++;
+// } else {
+//     playerScore++;
+// }
+
+// // winner function
+
+// function winner() {
+//     let winner = undefined;
+//     if (computerScore > playerScore) {
+//         winner = "Computer wins!";
+//     } else if (computerScore < playerScore) {
+//         winner = "Player wins!";
+//     } else {
+//         winner = "It's a tie";
+//     }
+//     return winner;
+// }
+// return "The score is: Computer " + computerScore + ", Player " + playerScore + winner();
+// }
