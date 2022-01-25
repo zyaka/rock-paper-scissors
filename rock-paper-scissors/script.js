@@ -6,26 +6,31 @@ function computerPlay() {
     return playObjects[randomNumber];
 }
 
-function playRound() {
+function playRound(object) {
     const computerSelection = computerPlay();
-    const playerSelection = prompt("enter an object:", "");
+    // const playerSelection = prompt("enter an object:", "");
+    const playerSelection = object;
+    console.log("you clicked on " + playerSelection);
 
-    let ixPlayer = playObjects.indexOf(playerSelection);
-    if (ixPlayer == -1)
-        console.log("Incorrect word")
+    let personPlay = playObjects.indexOf(playerSelection);
+    if (personPlay == -1)
+        alert("Incorrect word");
     else {
         let msg = "";
         if (playerSelection == computerSelection) {
             computerScore++;
             playerScore++;
             msg = "Tie!";
+            console.log("Tie!");
         } else {
-            if (playObjects[ixPlayer + 1] == computerSelection) {
+            if (playObjects[personPlay + 1] == computerSelection) {
                 computerScore++;
                 msg = "Cpu wins!";
+                console.log("Cpu wins!");
             } else {
                 playerScore++;
                 msg = "Player wins";
+                console.log("Player wins!");
             }
         }
         console.log("Cpu: " + computerSelection + ", Player: " + playerSelection + ", " + msg)
@@ -35,21 +40,30 @@ function playRound() {
 function game() {
     computerScore = 0;
     playerScore = 0;
-    for (i = 0; i < 5; i++) {
-        playRound();
-    }
+    // for (i = 0; i < 5; i++) {
+    //     playRound();
+    // }
+    playRound();
     declareWinner();
 }
 
 function declareWinner() {
     let msg = "";
     if (playerScore > computerScore)
-        msg = "I won the game!"
+        alert("You won the game!")
     else if (playerScore < computerScore)
-        msg = "Computer won the game!"
+        alert("Computer won the game!")
     else
-        msg = "Tie"
+        alert("Tie")
     console.log("The score is: Computer " + computerScore + ", Player " + playerScore + ", " + msg)
 }
+// game();
 
-game();
+document.getElementById("rock").btnFunction;
+document.getElementById("paper").btnFunction;
+document.getElementById("scissors").btnFunction;
+
+
+let btnFunction = addEventListener('click', (e) => {
+    playRound(e.target.id);
+});
